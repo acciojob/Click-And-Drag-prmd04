@@ -37,11 +37,15 @@ body {
   perspective: 500px;
 }
 
-.items.active {
-  background: rgba(255,255,255,0.3);
+.item {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  transition: none;
+}
+
+.item:active {
   cursor: grabbing;
-  cursor: -webkit-grabbing;
-  transform: scale(1);
 }
 
 .item {
