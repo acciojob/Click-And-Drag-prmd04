@@ -1,69 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Drag to Scroll</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click and Drag Cubes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="items">
-    <div class="item">01</div>
-    <div class="item">02</div>
-    <div class="item">03</div>
-    <div class="item">04</div>
-    <div class="item">05</div>
-    <div class="item">06</div>
-    <div class="item">07</div>
-    <div class="item">08</div>
-    <div class="item">09</div>
-    <div class="item">10</div>
-    <div class="item">11</div>
-    <div class="item">12</div>
-    <div class="item">13</div>
-    <div class="item">14</div>
-    <div class="item">15</div>
-    <div class="item">16</div>
-    <div class="item">17</div>
-    <div class="item">18</div>
-    <div class="item">19</div>
-    <div class="item">20</div>
-    <div class="item">21</div>
-    <div class="item">22</div>
-    <div class="item">23</div>
-    <div class="item">24</div>
-    <div class="item">25</div>
-  </div>
+    <h1>Click and Drag Cubes within a Defined Area</h1>
+    <div class="container" id="container">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        </div>
 
-  <script>
-    const items = document.querySelector('.items');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    items.addEventListener('mousedown', (e) => {
-      isDown = true;
-      items.classList.add('active');
-      startX = e.pageX - items.offsetLeft;
-      scrollLeft = items.scrollLeft;
-    });
-
-    items.addEventListener('mouseleave', () => {
-      isDown = false;
-      items.classList.remove('active');
-    });
-
-    items.addEventListener('mouseup', () => {
-      isDown = false;
-      items.classList.remove('active');
-    });
-
-    items.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - items.offsetLeft;
-      const walk = (x - startX) * 1; // speed
-      items.scrollLeft = scrollLeft - walk;
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>

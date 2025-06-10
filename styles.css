@@ -1,53 +1,56 @@
-html {
-  box-sizing: border-box;
-  background: #111;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  background: #222;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
-.items {
-  width: 90%;
-  max-width: 1000px;
-  height: 200px;
-  white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  border: 2px solid white;
-  background: rgba(255, 255, 255, 0.1);
-  cursor: grab;
-  position: relative;
-  user-select: none;
-  scroll-behavior: smooth;
+h1 {
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.items.active {
-  cursor: grabbing;
+.container {
+    width: 600px; /* Defined area width */
+    height: 400px; /* Defined area height */
+    border: 2px solid #3498db;
+    background-color: #ecf0f1;
+    position: relative; /* Essential for positioning cubes within it */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Grid for initial layout */
+    grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure cubes don't visually escape */
 }
 
-.item {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 150px;
-  margin: 20px;
-  font-size: 48px;
-  font-weight: bold;
-  color: white;
-  background: #444;
-  border-radius: 8px;
-  flex-shrink: 0;
+.cube {
+    width: 80px;
+    height: 80px;
+    background-color: #e74c3c;
+    border: 1px solid #c0392b;
+    cursor: grab;
+    position: absolute; /* Allows individual positioning after drag */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: background-color 0.2s ease; /* Smooth transition for active state */
+}
+
+.cube:hover {
+    background-color: #c0392b;
+}
+
+.cube.dragging {
+    cursor: grabbing;
+    background-color: #2ecc71; /* Highlight when dragging */
+    z-index: 1000; /* Bring dragged cube to front */
 }
